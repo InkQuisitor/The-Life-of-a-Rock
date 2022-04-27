@@ -5,23 +5,10 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
 
-    /* public GameObject player;
-     private Vector3 offset = new Vector3(0, 2, -3);
-
-     void Start()
-     {
-
-     }
-
-
-     void LateUpdate()
-     {
-         transform.position = player.transform.position + offset;
-     }*/
     
     public Transform target;
     public float distance = 10.0f;
-    public float height = 5.0f;
+    public float height = 20.0f;
     public float heightDamping = 2.0f;
     public float rotationDamping = 3.0f;
 
@@ -42,7 +29,7 @@ public class CameraFollow : MonoBehaviour
         var currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
 
         transform.position = target.position;
-        transform.position -= currentRotation * Vector3.forward * distance;
+        //transform.position -= currentRotation * Vector3.forward * distance;
 
         transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);
 

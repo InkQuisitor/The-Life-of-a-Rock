@@ -5,9 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    private float speed = 10.0f;
-    private float turnSpeed = 40.0f;
-    //private float jumpSpeed = 10.0f;
+    public float rotateSpeed;
     public float jumpForce;
     public float horizontalInput;
     public float forwardInput;
@@ -28,14 +26,10 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
-        //jumpInput = Input.GetAxis("Jump");
 
 
-
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-        transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * horizontalInput);
-        //transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
-        //transform.Translate(Vector3.up * Time.deltaTime * jumpSpeed * jumpInput);
+        Vector3 movement = new Vector3 (horizontalInput, 0.0f, forwardInput);
+        playerRb.AddForce(movement * rotateSpeed);
 
 
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
